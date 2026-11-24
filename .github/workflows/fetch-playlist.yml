@@ -2,29 +2,35 @@ name: Fetch THE Playlist
 
 on:
   schedule:
-    # Runs every 6 hours in UTC (00:00, 06:00, 12:00, 18:00 UTC)
-    - cron: "0 */6 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
-    # Lets you trigger a test run manually from the Actions tab anytime
+
+permissions:
+  contents: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
       - name: Run playlist fetcher
         run: python fetch_playlist.py
 
-      - name: Upload playlist artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: THE-playlist
-          path: playlist.m3u
-          retention-days: 7
+      - name: Commit playlist.m3u to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add playlist.m3u
+          if git diff --staged --quiet; then
+            echo "No changes to playlist.m3u"
+          else
+            git commit -m "Update playlist.m3u"
+            git push
+          fi
