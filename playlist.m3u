@@ -9,6 +9,7 @@
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_key=https://mix.drmlive.net/mix/allowipmpd_key.php?id=chlajabsdk
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/d3Yf3PHX/DRMLIVE-Aggressive-Logo.png" group-title="1-Playlist-Activation",Activate Playlist
+#EXTVLCOPT:http-user-agent=TiviMate/4.7.0 (Linux; Android 11)
 https://mix.drmlive.net/mix/actchaljabsdk.mpd?token=TkYzbDU5OS94TjZEUHhwVVNwM0JhdkVDQVQ4SzNUS3FtTTdKeUpFZ25LbloyOTEwbisyNWY3OU9BRklMbDdqeTFpVGpwdGtQQUNSS1ZKWUZUY2tBV3hOMGhxb2tHMlQzL1d4YVI3cHJGUFN6eW9CS0Irb1NVcG9mK3l1byszOFhoZ2orcXNkY2Y5dHB0bmk0blllNnF3PT0=
 
 #KODIPROP:inputstream.adaptive.license_type=clearkey
